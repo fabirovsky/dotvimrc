@@ -43,8 +43,34 @@ let g:lightline = {
 \        'right': [ [ 'lineinfo' ], [], [ 'fileencoding', 'filetype'] ]
 \	 },
 \    'inactive': {
-\	 'right': [['lineinfo'], [], [] ]		
+\	     'right': [['lineinfo'], [], [] ]
+\    },
+\    'component_function': {
+\        'filetype': 'LightlineFiletype',
+\        'fileencoding': 'LightlineFileencoding',
+\        'mode': 'LightlineMode',
+\        'filename': 'LightlineFilename',
 \    }}
+" Hide filetype and fileencoding when width < 50
+function! LightlineFiletype()
+    return winwidth(0) > 50 ? &filetype : ''
+endfunction
+function! LightlineFileencoding()
+    return winwidth(0) > 50 ? &fileencoding : ''
+endfunction
+" Additional configuration for specific plugins
+function! LightlineMode()
+    return expand('%:t') ==# '__Tagbar__' ? 'Tagbar':
+        \ expand('%:t') ==# 'ControlP' ? 'CtrlP' :
+        \ &filetype ==# 'unite' ? 'Unite' :
+        \ &filetype ==# 'nerdtree' ? 'NERDTree' :
+        \ lightline#mode()
+endfunction
+function! LightlineFilename()
+    return &filetype ==# 'unite' ? unite#get_status_string() :
+        \ &filetype ==# 'nerdtree' ? '' :
+        \ expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
+endfunction
 
 
 " NERD tree setup
@@ -59,3 +85,6 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 " 80 characters line
 set colorcolumn=80
+
+
+
