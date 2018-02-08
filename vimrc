@@ -8,7 +8,19 @@ call plug#begin('~/.vim/plugged')
     Plug 'itchyny/lightline.vim'
     " Lint
     Plug 'w0rp/ale'
+    " Auto completition Deopete
+    if has('nvim')
+        Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+        Plug 'zchee/deoplete-jedi' " For python
+    else
+        Plug 'Shougo/deoplete.nvim'
+        Plug 'roxma/nvim-yarp'
+        Plug 'roxma/vim-hug-neovim-rpc'
+    endif
 call plug#end()
+
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
 
 " UI config
 set number
@@ -28,7 +40,7 @@ colorscheme one
 set background=light
 
 " Set transparent background
-hi Normal guibg=NONE ctermbg=NONE 
+" hi Normal guibg=NONE ctermbg=NONE 
 
 
 " Lightline configuration
