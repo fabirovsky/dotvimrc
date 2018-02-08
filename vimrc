@@ -8,8 +8,6 @@ call plug#begin('~/.vim/plugged')
     Plug 'itchyny/lightline.vim'
     " Lint
     Plug 'w0rp/ale'
-    " Integration ALE to Lightline 
-    Plug 'maximbaz/lightline-ale'
 call plug#end()
 
 " UI config
@@ -38,9 +36,9 @@ let g:lightline = {
 \    'colorscheme': 'one',
 \    'active': {
 \        'right': [ 
-\           ['lineinfo', 'linter_errors', 'linter_warnings', 'linter_ok' ], 
+\           ['lineinfo', ], 
 \           [], 
-            [ 'fileencoding', 'filetype'] ]
+\           [ 'fileencoding', 'filetype'] ]
 \	 },
 \    'inactive': {
 \	     'right': [['lineinfo'], [], [] ]
@@ -72,18 +70,6 @@ function! LightlineFilename()
 \       expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
 endfunction
 
-" Lintline-ale configuration
-let g:lightline.component_expand = {
-\    'linter_warnings': 'lightline#ale#warnings',
-\    'linter_errors': 'lightline#ale#errors',
-\    'linter_ok': 'lightline#ale#ok',
-\ }
-let g:lightline.component_type = {
-\    'linter_warnings': 'warning',
-\    'linter_errors': 'error',
-\    'linter_ok': 'left',
-\ }
-
 " NERD tree setup
 autocmd vimenter * NERDTree
 let g:NERDTreeWinSize = 40
@@ -94,6 +80,5 @@ let NERDTreeDirArrows = 1
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " ALE config
-" Check Python files with flake8 and pylint.
 let g:ale_fix_on_save = 1
 let g:ale_set_highlights = 0
