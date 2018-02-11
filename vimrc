@@ -1,7 +1,9 @@
 " Plugins:
 call plug#begin('~/.vim/plugged')    
     " Tree view
-    Plug 'scrooloose/nerdtree' 
+    Plug 'scrooloose/nerdtree'
+    " Git integration to nerdtree
+    Plug 'Xuyuanp/nerdtree-git-plugin'
     " One theme
     Plug 'rakr/vim-one'
     " Configurable line
@@ -17,10 +19,17 @@ call plug#begin('~/.vim/plugged')
         Plug 'roxma/nvim-yarp'
         Plug 'roxma/vim-hug-neovim-rpc'
     endif
+    " Auto save
+    Plug '907th/vim-auto-save'
 call plug#end()
 
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
+set completeopt-=preview
+
+" Vim auto save setup
+let g:auto_save = 1
+let g:auto_save_write_all_buffers = 1
 
 " UI config
 set number
@@ -90,6 +99,9 @@ let NERDTreeMinimalUI=1
 let NERDTreeDirArrows = 1
 " Close tab if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+map <C-\> :NERDTreeToggle<CR>
+let NERDTreeQuitOnOpen = 1
+let NERDTreeAutoDeleteBuffer = 1
 
 " ALE config
 let g:ale_fix_on_save = 1
