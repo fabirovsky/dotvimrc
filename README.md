@@ -3,16 +3,15 @@ My vimrc file for vim/neovim.
 
 ### Install
 1. Clone this repository and open it.
-2. Get [vim-plug](https://github.com/junegunn/vim-plug).
+2. Install [vim-plug](https://github.com/junegunn/vim-plug).
 3. Add symlink to vimrc file.
 ```bash
 # Neovim
-ln -s '&PWD/vimrc' ~/.config/nvim/init.vim
+ln -s $PWD/vimr ~/.config/nvim/init.vim
 # Vim
-ln -s '&PWD/vimrc' ~/.vimrc
+ln -s $PWD/vimrc ~/.vimrc
 ```
-4. Install other dependency.
+4. Install other dependencies if you need its.
 ```
-# deoplete
-pip3 install neovim
+pip3 install neovim flake8 autopep8 pylint
 ```
