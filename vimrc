@@ -21,6 +21,12 @@ call plug#begin('~/.vim/plugged')
     endif
     " Auto save
     Plug '907th/vim-auto-save'
+    " Auto pair bracets
+    Plug 'jiangmiao/auto-pairs'
+    " Highlight syntax of .vue files
+    Plug 'posva/vim-vue'
+    " Auto close tags
+    Plug 'alvan/vim-closetag'
 call plug#end()
 
 " Use deoplete.
@@ -35,13 +41,13 @@ let g:auto_save_write_all_buffers = 1
 set number
 set cursorline
 set colorcolumn=80
-
 " Python indentation
 set tabstop=8
 set expandtab
 set shiftwidth=4
 set softtabstop=4
 
+set directory=~/.vim/tmp " don't litter my drive with .swp files
 " Theme
 syntax on
 filetype indent plugin on
@@ -49,7 +55,8 @@ colorscheme one
 set background=light
 
 " Set transparent background
-" hi Normal guibg=NONE ctermbg=NONE 
+hi Normal guibg=NONE ctermbg=NONE 
+
 
 
 " Lightline configuration
