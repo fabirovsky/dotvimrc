@@ -37,27 +37,33 @@ set completeopt-=preview
 let g:auto_save = 1
 let g:auto_save_write_all_buffers = 1
 
+" Don't litter my drive with .swp files
+set directory=~/.vim/tmp
+
 " UI config
 set number
 set cursorline
-set colorcolumn=80
-" Python indentation
+set colorcolumn=80,120
+syntax on
+filetype indent plugin on
+colorscheme one " Theme
+set background=light
+" Set transparent background
+hi Normal guibg=NONE ctermbg=NONE
+
+" Use system clipboard
+set clipboard^=unnamed,unnamedplus
+
+" Default indentation - 4 spaces
 set tabstop=8
 set expandtab
 set shiftwidth=4
 set softtabstop=4
-
-set directory=~/.vim/tmp " don't litter my drive with .swp files
-" Theme
-syntax on
-filetype indent plugin on
-colorscheme one
-set background=light
-
-" Set transparent background
-hi Normal guibg=NONE ctermbg=NONE 
-
-
+" Indentation for different filetypes - 2 spaces
+autocmd FileType html setlocal shiftwidth=2 tabstop=2
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
+autocmd FileType vue setlocal shiftwidth=2 tabstop=2
+autocmd FileType css setlocal shiftwidth=2 tabstop=2
 
 " Lightline configuration
 let g:lightline = {
