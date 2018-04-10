@@ -1,5 +1,5 @@
 " Plugins:
-call plug#begin('~/.vim/plugged')    
+call plug#begin()    
     " Tree view
     Plug 'scrooloose/nerdtree'
     " Git integration to nerdtree
@@ -11,14 +11,8 @@ call plug#begin('~/.vim/plugged')
     " Lint
     Plug 'w0rp/ale'
     " Auto completition Deopete
-    if has('nvim')
-        Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-        Plug 'zchee/deoplete-jedi' " For python
-    else
-        Plug 'Shougo/deoplete.nvim'
-        Plug 'roxma/nvim-yarp'
-        Plug 'roxma/vim-hug-neovim-rpc'
-    endif
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    Plug 'zchee/deoplete-jedi' " For python
     " Auto save
     Plug '907th/vim-auto-save'
     " Auto pair bracets
@@ -38,7 +32,7 @@ let g:auto_save = 1
 let g:auto_save_write_all_buffers = 1
 
 " Don't litter my drive with .swp files
-set directory=~/.vim/tmp
+" set directory=~/.vim/tmp
 
 " UI config
 set number
@@ -49,7 +43,7 @@ filetype indent plugin on
 colorscheme one " Theme
 set background=light
 " Set transparent background
-hi Normal guibg=NONE ctermbg=NONE
+" hi Normal guibg=NONE ctermbg=NONE
 
 " Use system clipboard
 set clipboard^=unnamed,unnamedplus

@@ -1,5 +1,4 @@
-# vimrc.
-My vimrc file for vim/neovim.
+# Init file for Neovim.
 
 ### Install
 1. Clone this repository and open it.
@@ -7,9 +6,7 @@ My vimrc file for vim/neovim.
 3. Add symlink to vimrc file.
 ```bash
 # Neovim
-ln -s $PWD/vimr ~/.config/nvim/init.vim
-# Vim
-ln -s $PWD/vimrc ~/.vimrc
+ln -s $PWD/vimrc ~/.config/nvim/init.vim
 ```
 4. Install other dependencies if you need its.
 ```
