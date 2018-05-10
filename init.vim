@@ -21,7 +21,14 @@ call plug#begin()
     Plug 'posva/vim-vue'
     " Auto close tags
     Plug 'alvan/vim-closetag'
+    " LaTeX auto compile
+    Plug 'donRaphaco/neotex', { 'for': 'tex' }
+    " Editorconfig
+    Plug 'editorconfig/editorconfig-vim'
 call plug#end()
+
+" Enable neotex
+let g:neotex_enabled = 2
 
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
@@ -30,6 +37,22 @@ set completeopt-=preview
 " Vim auto save setup
 let g:auto_save = 1
 let g:auto_save_write_all_buffers = 1
+
+" Move lines up and down via Ctrl + Up / Down
+nnoremap <C-DOWN> :m .+1<CR>==
+nnoremap <C-UP> :m .-2<CR>==
+inoremap <C-DOWN> <Esc>:m .+1<CR>==gi
+inoremap <C-UP> <Esc>:m .-2<CR>==gi
+vnoremap <C-DOWN> :m '>+1<CR>gv=gv
+vnoremap <C-UP> :m '<-2<CR>gv=gv
+
+nnoremap <C-j> :m .+1<CR>==
+nnoremap <C-k> :m .-2<CR>==
+inoremap <C-j> <Esc>:m .+1<CR>==gi
+inoremap <C-k> <Esc>:m .-2<CR>==gi
+vnoremap <C-j> :m '>+1<CR>gv=gv
+vnoremap <C-k> :m '<-2<CR>gv=gv
+
 
 " Don't litter my drive with .swp files
 " set directory=~/.vim/tmp
@@ -42,6 +65,10 @@ syntax on
 filetype indent plugin on
 colorscheme one " Theme
 set background=light
+
+set so=999 " scroll off
+set ic " ignore case
+
 " Set transparent background
 " hi Normal guibg=NONE ctermbg=NONE
 
@@ -101,6 +128,7 @@ endfunction
 " NERD tree setup
 autocmd vimenter * NERDTree
 let g:NERDTreeWinSize = 40
+let NERDTreeShowHidden=1
 " Remove help line
 let NERDTreeMinimalUI=1
 let NERDTreeDirArrows = 1
