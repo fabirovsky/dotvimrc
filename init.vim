@@ -19,13 +19,21 @@ call plug#begin()
     Plug 'jiangmiao/auto-pairs'
     " Highlight syntax of .vue files
     Plug 'posva/vim-vue'
-    " Auto close tags
-    Plug 'alvan/vim-closetag'
+    " XML support
+    Plug 'othree/xml.vim'
+    " CSS color name highlighter
+    Plug 'ap/vim-css-color'
+    " Comments lines of code
+    Plug 'scrooloose/nerdcommenter'
     " LaTeX auto compile
     Plug 'donRaphaco/neotex', { 'for': 'tex' }
     " Editorconfig
     Plug 'editorconfig/editorconfig-vim'
 call plug#end()
+
+" Nerd commenter
+"Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
 
 " Enable neotex
 let g:neotex_enabled = 2
@@ -60,7 +68,7 @@ vnoremap <C-k> :m '<-2<CR>gv=gv
 " UI config
 set number
 set cursorline
-set colorcolumn=80,120
+set colorcolumn=80,100,120
 syntax on
 filetype indent plugin on
 colorscheme one " Theme
